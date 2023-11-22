@@ -1,15 +1,29 @@
 .container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
+    width: 100%;
+  
 }
 .input{
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 #item{
     padding: 0.7rem;
+    width: 300px;
+   
 }
 #add{
     padding: .7rem;
+    width: 7rem;
+}
+#todo-list{
+    display: block;
+    width: 100%;
+    margin: 1rem;
+    padding: 1rem;
+}
+#todo-list li{
+    margin: .5rem;
+    padding: .5rem;
 }
