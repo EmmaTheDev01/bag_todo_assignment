@@ -31,7 +31,7 @@ function displayItems() {
   for (let i = 0; i < itemsToLocalStorage.length; i++) {
     items += `   <div class="item">
     <div class="input-create">
-      <li disabled>${itemsToLocalStorage[i]}</li>
+     <li id="todo-list-item"> ${itemsToLocalStorage[i]}</li>
       <div class="edit-task">
         <button id="btnEdit">Edit</button>
       </div>
@@ -41,17 +41,53 @@ function displayItems() {
     </div>
     <div class="update-task">
       <button id="btnUpdate">Update</button>
-      <button id="btnCancel">Cancel</button>
+      <input type="checkbox" id="btnComplete" name="complete" />
     </div>
   </div>`;
   }
   //Displaying the items on the web page
   document.getElementById("todo-list").innerHTML = items;
 
-//   Perform actions on tasks
+  //   Perform actions on tasks
   deleteItemsBtn();
   editItemsBtn();
-  updateItemsBtn();
-  cancelItemsBtn();
+  completeItemsBtn();
 }
-console.log(itemsToLocalStorage);
+
+// Deleting item or task
+function deleteItemsBtn() {
+  let btnDelete = document.getElementsByClassName("delete-task");
+  for (let i = 0; i < btnDelete.length; i++) {
+    btnDelete[i].addEventListener("click", () => {
+      itemsToLocalStorage.splice(i, 1);
+      localStorage.setItem("items", JSON.stringify(itemsToLocalStorage));
+      window.location.reload();
+    });
+  }
+}
+
+// Editing item or task
+function editItemsBtn() {
+  let btnEdit = document.getElementsByClassName("edit-task");
+  for (let i = 0; i < btnEdit.length; i++) {
+    btnEdit[i].addEventListener("click", () => {
+      let editItem = document.getElementById("item");
+      editItem.value = itemsToLocalStorage[i];
+      localStorage.setItem("items", JSON.stringify(itemsToLocalStorage));
+      itemsToLocalStorage.splice(i, 1);
+    });
+  }
+}
+// Strikethrough completed task
+function completeItemsBtn() {
+  let btnComplete = document.getElementsByClassName("update-task");
+  for (let i = 0; i < btnComplete.length; i++) {
+    btnComplete[i].addEventListener("click", () => {
+      const todoItem = document.getElementById("todo-list-item");
+      if (btnComplete[i].checked) {
+        todoItem.classList.add("checked");
+      }
+    });
+  }
+}
+console.log(itemsToLocalStorage.reverse());
