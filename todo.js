@@ -22,17 +22,36 @@ function CurrentDate() {
 }
 window.onload = function () {
   document.getElementById("date").innerHTML = CurrentDate();
+  displayItems();
 };
 
 // Function to display added items on the web page
 function displayItems() {
-  let list = document.getElementById("todo-list");
-  list.innerHTML = "";
+  let items = "";
   for (let i = 0; i < itemsToLocalStorage.length; i++) {
-    let item = document.createElement("li");
-    item.innerHTML = itemsToLocalStorage[i];
-    list.appendChild(item);
+    items += `   <div class="item">
+    <div class="input-create">
+      <li disabled>${itemsToLocalStorage[i]}</li>
+      <div class="edit-task">
+        <button id="btnEdit">Edit</button>
+      </div>
+      <div class="delete-task">
+        <button id="btnDelete">Delete</button>
+      </div>
+    </div>
+    <div class="update-task">
+      <button id="btnUpdate">Update</button>
+      <button id="btnCancel">Cancel</button>
+    </div>
+  </div>`;
   }
+  //Displaying the items on the web page
+  document.getElementById("todo-list").innerHTML = items;
+
+//   Perform actions on tasks
+  deleteItemsBtn();
+  editItemsBtn();
+  updateItemsBtn();
+  cancelItemsBtn();
 }
-displayItems();
 console.log(itemsToLocalStorage);
