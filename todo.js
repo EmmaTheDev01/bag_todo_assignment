@@ -105,10 +105,12 @@ function completeItemsBtn() {
 
 function pinItemsBtn(){
 
-  let btnPin = document.getElementByClassName("pin-task");
+  let btnPin = document.getElementsByClassName("pin-task");
   for (let i = 0; i < btnPin.length; i++) {
     btnPin[i].addEventListener("click", () => {
-      itemsToLocalStorage[i] = `<span> <i class="fa fa-thumb-tack" aria-hidden="true"></i>${itemsToLocalStorage[i]} <span>`;
+      let editItem = document.getElementById("item");
+      editItem.value = itemsToLocalStorage[i];
+      itemsToLocalStorage[i] = `<span><span class="pin"><i class="fa fa-thumb-tack pin" aria-hidden="true"></i></span> ${itemsToLocalStorage[i]} <span>`;
       localStorage.setItem("items", JSON.stringify(itemsToLocalStorage));
       window.location.reload();
     });
