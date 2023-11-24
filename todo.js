@@ -34,20 +34,20 @@ function displayItems() {
     <div class="input-create">
      <li id="todo-list-item"> ${itemsToLocalStorage[i]}</li>
     </div>
-    <div class="update-task">
+    <div class="update-task" title="Mark task as completed">
       <button id="btnComplete"><i class="fa fa-check" aria-hidden="true"></i></button/>
     </div>
     <div class="pin-task">
-    <button id="btnPin">
+    <button id="btnPin" title="Mark task as important or pinned">
       <i class="fa fa-thumb-tack" aria-hidden="true"></i></button>
     </div>
     <div class="edit-task">
-    <button id="btnEdit">
+    <button id="btnEdit" title="Edit task">
     <i class="fa-solid fa-pen-to-square"></i>
     </button>
   </div>
   <div class="delete-task">
-    <button id="btnDelete">
+    <button id="btnDelete" title="Delete item">
     <i class="fa fa-trash" aria-hidden="true"></i>
     </button>
   </div>
