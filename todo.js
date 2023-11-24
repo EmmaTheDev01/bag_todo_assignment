@@ -1,3 +1,4 @@
+const listItem = document.getElementById('todo-list-item')
 // Adding items to the local storage
 const itemsToLocalStorage = localStorage.getItem("items")
   ? JSON.parse(localStorage.getItem("items"))
@@ -32,17 +33,24 @@ function displayItems() {
     items += `   <div class="item">
     <div class="input-create">
      <li id="todo-list-item"> ${itemsToLocalStorage[i]}</li>
-      <div class="edit-task">
-        <button id="btnEdit">Edit</button>
-      </div>
-      <div class="delete-task">
-        <button id="btnDelete">Delete</button>
-      </div>
     </div>
     <div class="update-task">
-      <button id="btnUpdate">Update</button>
-      <input type="checkbox" id="btnComplete" name="complete" />
+      <button id="btnComplete"><i class="fa fa-check" aria-hidden="true"></i></button/>
     </div>
+    <div class="pin-task">
+    <button id="btnPin">
+      <i class="fa fa-thumb-tack" aria-hidden="true"></i></button>
+    </div>
+    <div class="edit-task">
+    <button id="btnEdit">
+    <i class="fa-solid fa-pen-to-square"></i>
+    </button>
+  </div>
+  <div class="delete-task">
+    <button id="btnDelete">
+    <i class="fa fa-trash" aria-hidden="true"></i>
+    </button>
+  </div>
   </div>`;
   }
   //Displaying the items on the web page
@@ -52,6 +60,7 @@ function displayItems() {
   deleteItemsBtn();
   editItemsBtn();
   completeItemsBtn();
+  pinItemsBtn();
 }
 
 // Deleting item or task
@@ -83,11 +92,26 @@ function completeItemsBtn() {
   let btnComplete = document.getElementsByClassName("update-task");
   for (let i = 0; i < btnComplete.length; i++) {
     btnComplete[i].addEventListener("click", () => {
-      const todoItem = document.getElementById("todo-list-item");
-      if (btnComplete[i].checked) {
-        todoItem.classList.add("checked");
+      
+        itemsToLocalStorage[i] = `<s>${itemsToLocalStorage[i]}  <span id='completed'>Completed</span></s>`;
+        localStorage.setItem("items", JSON.stringify(itemsToLocalStorage));
+        window.location.reload();
       }
+    );
+  }
+}
+
+// Mark task as important
+
+function pinItemsBtn(){
+
+  let btnPin = document.getElementByClassName("pin-task");
+  for (let i = 0; i < btnPin.length; i++) {
+    btnPin[i].addEventListener("click", () => {
+      itemsToLocalStorage[i] = `<span> <i class="fa fa-thumb-tack" aria-hidden="true"></i>${itemsToLocalStorage[i]} <span>`;
+      localStorage.setItem("items", JSON.stringify(itemsToLocalStorage));
+      window.location.reload();
     });
   }
 }
-console.log(itemsToLocalStorage.reverse());
+console.log(itemsToLocalStorage.reverse())
