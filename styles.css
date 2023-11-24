@@ -24,6 +24,7 @@ h3 {
 #item {
   padding: 0.7rem;
   width: 260px;
+  outline: none;
 
 }
 #add {
@@ -51,7 +52,7 @@ h3 {
   font-weight: 700;
   padding: 0.2rem;
   border-radius: 10px;
-  font-size: 0.5rem;
+  font-size: 0.7rem;
   margin-left: 0.2rem;
 }
 .item {
@@ -69,4 +70,35 @@ h3 {
   color: rgb(89, 161, 230);
   font-size: .7rem;
   margin-right: 0.2rem;
+}
+button{
+    cursor: pointer;
+}
+#btnComplete{
+    color: #fff;
+    background-color: rgb(22, 177, 87);
+    border: none;
+    padding: 0.3rem;
+    
+}
+#btnPin{
+    color: #fff;
+    background-color: rgb(0, 130, 252);
+    border: none;
+    padding: 0.3rem;
+    margin-left: 0.2rem;
+}
+#btnEdit{
+    color: #fff;
+    background-color: rgb(114, 146, 177);
+    border: none;
+    padding: 0.3rem;
+    margin-left: 0.2rem;
+}
+#btnDelete{
+    color: #fff;
+    background-color: rgb(238, 14, 14);
+    border: none;
+    padding: 0.3rem;
+    margin-left: 0.2rem;
 }
